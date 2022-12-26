@@ -1,52 +1,55 @@
-#include"team.hpp" 
+#include"Team.hpp" 
 #include<bits/stdc++.h>
 using namespace std;
-class shop{
+class Shop{
 	public: 
-		shop(int coins=7);//初始化开始回合金币 
-		~shop()=default;
+		Shop(int coins=7);//初始化开始回合金币 
+		~Shop()=default;
 		int getCoins()const;//获取金币数的接口 
 		void addCoins();//每回合添加金币 
 		void setCoins(int coins);//设置金币数 
-        void Buy(team& t,int choice,int pos);//购买单位函数 
-        void Sell(team& t,int pos);//出售单位函数 
+        void Buy(Team& t,int choice,int pos);//购买单位函数 
+        void Sell(Team& t,int pos);//出售单位函数 
     private:
     	int Coins;//金币数 
     	int choice;//选项变量，用于购买出售函数 
 };
-shop::shop(int coins):Coins{coins}{}
-void shop::addCoins(){
+Shop::Shop(int coins):Coins{coins}{}
+void Shop::addCoins(){
 	Coins += 3;
 }
-void shop::setCoins(int coins){
+void Shop::setCoins(int coins){
 	Coins = coins;
 }
-int shop::getCoins()const{
+int Shop::getCoins()const{
     return Coins;
 }
-void shop::Buy(team &t,int choice,int pos)
+void Shop::Buy(Team &t,int choice,int pos)
 {   
 	if(choice==1){
-	   role r1(5,3);
+	   Role r1(5,3);
 	   r1.setJob(saber);
-	   t.addrole(r1,pos);
+	   t.addRole(r1,pos);
 		Coins-=3;
 	}
 	else if(choice==2){
-		role r2;
+		Role r2;
 		r2.setJob(archer);
-		t.addrole(r2,pos);
+		t.addRole(r2,pos);
 		Coins-=3;
 	}
 	else if(choice==3){
-		role r3;
+		Role r3;
 		r3.setJob(mage);
-		t.addrole(r3,pos);
+		t.addRole(r3,pos);
 		Coins-=3;
 	}
 }
-void shop::Sell(team &t,int pos)
+void Shop::Sell(Team &t,int pos)
 {
       Coins+=1;
-      t.deleterole(pos);
+      t.deleteRole(pos);
 }
+
+
+

@@ -3,6 +3,6 @@
 using namespace std;
 int main(){
 	Gamemanager manager;
-	manager.start();
-	manager.maingame();
+	manager.Start();
+	manager.Maingame();
 }
